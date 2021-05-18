@@ -25,7 +25,7 @@ def main(argv):
 
     parser=argparse.ArgumentParser()
 
-    parser.add_argument('-rootFolder',help=f"Root folder where training files are located",default=os.path.join(os.path.dirname(__file__),'..','ConditionData'))
+    parser.add_argument('-rootFolder',help=f"Root folder where training files are located",default=os.path.join(os.path.dirname(__file__),'..','IcareData'))
     # parser.add_argument('-attributes',help='Dump attributes',action='store_true')
     # parser.add_argument('-to_csv',help='Dump dataframe to CSV file',action='store_true')
     # parser.add_argument('-to_json',help='Dump raw data JSON file',action='store_true')
