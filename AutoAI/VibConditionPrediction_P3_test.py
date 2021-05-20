@@ -49,15 +49,15 @@ def main(argv):
 
     import pandas as pd
     # Keep columns of interest plus 
+    print(f"Loading test data from {args.testCSV}")
     df=pd.read_csv(args.testCSV)[['timestamp','condition','deviceid', 'order1_fftv', 'order1_fftg', 'order2_fftv', 'order2_fftg', 'order3_fftv', 'order3_fftg']]
     print(df.describe(include='all'))
     cols=[c for c in df.columns[2:]]
-    print(f"Keeping {','.join(cols)} columns")
+    print(f"Keeping {','.join(cols)} columns, launching prediction on {len(df)} rows")
 
-    conditions=pipeline.predict(df[cols].to_numpy())
-    print(conditions)
-    df['predicted']=conditions
-    print(df)
+    df['predicted']=pipeline.predict(df[cols].to_numpy())
+    print(f"Observed vs Predicted conditions")
+    print(df[['condition','predicted']])
 
 if __name__=='__main__':
     logging.basicConfig(stream=sys.stdout, level=logging.INFO)
